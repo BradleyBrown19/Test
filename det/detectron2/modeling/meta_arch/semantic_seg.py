@@ -168,11 +168,13 @@ class SemSegFPNHead(nn.Module):
             return x, {}
 
     def layers(self, features):
+        import pdb; pdb.set_trace()
         for i, f in enumerate(self.in_features):
             if i == 0:
                 x = self.scale_heads[i](features[f])
             else:
                 x = x + self.scale_heads[i](features[f])
+        import pdb; pdb.set_trace()
         x = self.predictor(x)
         return x
 
